@@ -23,6 +23,7 @@ The VM is designed primarily for PHP 7 development but installs latest perl, nod
 
 
 BASIC REQUIREMENTS
+
 To run this VM, your pc must be on Windows 7 SP1 (64-bit --- though i run mine on 32-bit but it is not advisable) with powershell 3.0 and above, Windows 8.1 and Windows 10.
 
 Your pc must be connected to a power supply and broadband internet before firing up the machine.
@@ -30,6 +31,7 @@ Your pc must be connected to a power supply and broadband internet before firing
 It is highly recommended to peruse the vagrant doc at vagrantup.com/docs if you are new to vagrant and virtualization.
 
 SET-UP
+
 - Download and install latest Vagrant.
 - Download and install latest Virtualbox (applicable to your pc architecture).
 - Open powershell and use 'vagrant box add bento/ubuntu-18.10' command to download bento/ubuntu-18.10 box from Hashicorp cloud.
@@ -41,6 +43,7 @@ SET-UP
 
 
 CONFIGURATION
+
 To customize the VM configuration, open the vagrantfile and modify its content before running vagrant up command.
 
 Ansible roles variables are found in ansible/var/all.yml. If you want to install/configure any services not included with this package, kindly look for ansible roles that performs such function on Ansible Galaxy and edit requirements.yml and playbook.yml found in ansible folder. Don't change anything you don't understand. Visit ansible docs when in doubt.
@@ -49,6 +52,7 @@ Always use the relevant docs before starting this VM OR you can use the issue qu
 
 
 USAGE
+
 Copy your project directory inside the 'www' folder OR create a new project directory. The 'www' folder is synced with /var/www/rising in the VM. You can create and edit your project files on your PC using your favorite IDE or text editor.
 
 If you've edited the windows hosts file and include your preferred hostname as an entry, just type the hostname in your browser to access the HTTP Server. Else use the IP found in the vagrantfile to access the HTTP server.
