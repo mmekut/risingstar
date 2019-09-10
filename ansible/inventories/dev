@@ -1,0 +1,2 @@
+[risingStar]
+ubuntu ansible_connection=local

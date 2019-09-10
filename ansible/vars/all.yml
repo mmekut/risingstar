@@ -1,0 +1,105 @@
+---
+# Server Utility Packages
+server:
+    packages: [vim, htop, wget, iotop, curl, bash-completion, libssl-dev, software-properties-common]
+    timezone: Europe/Amsterdam
+    locale: en_US.utf8
+    hostname: risingStar
+    
+
+
+# pip packages for OpenSSL cert generation
+pip_package: python3-pip
+pip_install_packages:
+    - name: pyOpenSSL
+    - name: cryptography
+    
+      
+# Install git from source
+git_install_from_source: true
+git_install_from_source_force_update: true
+git_version: "2.21.0"
+
+
+# mysql role settings -- installs Mysql on Ubuntu
+mysql_root_password: TOTALELFFINA
+mysql_databases:
+    - name: general
+mysql_users:
+    - name: mme
+      host: "127.0.0.1"
+      password: mmekut2019
+      priv: "general.*:ALL"
+
+# postgresql role settings
+postgresql_databases:
+    - name: general
+postgresql_users:
+    - name: mme
+      password: mmekut2019
+
+
+# LetsEncrypt doesn't generate cert for local private domains
+# So OpenSSL self-signed is used
+
+# Official NGINX role settings
+nginx_unit_enable: true
+nginx_unit_modules:
+      - unit-dev
+      - unit-php
+nginx_modules:
+  njs: true
+  image_filter: true
+  rtmp: true
+nginx_cleanup_config: true
+nginx_http_upload_enable: true
+# full path worked like charm
+nginx_http_upload_src: /vagrant/ansible/files/*.conf
+
+
+# php role settings for Debian/Ubuntu
+php_default_version_debian: "7.3"
+php_enable_php_fpm: true
+# php-fpm doesn't require unix: prefix when specifying socket file it'll listen
+php_fpm_listen: "/run/php/php7.3-fpm.sock"
+php_fpm_pm_start_servers: 2
+php_fpm_pm_min_spare_servers: 1
+php_upload_max_filesize: "256M"
+php_post_max_size: "96M"
+php_date_timezone: "Europe/Amsterdam"
+php_display_errors: "On"
+php_packages_extra:
+        - php{{ php_default_version_debian }}-intl
+        - php{{ php_default_version_debian }}-pdo
+        - php{{ php_default_version_debian }}-geoip
+        - php{{ php_default_version_debian }}-memcached
+        - php{{ php_default_version_debian }}-mysql
+        - php{{ php_default_version_debian }}-pgsql
+        - php{{ php_default_version_debian }}-redis
+        - php{{ php_default_version_debian }}-imagick
+        - php{{ php_default_version_debian }}-exif
+        - php{{ php_default_version_debian }}-yaml
+        - php{{ php_default_version_debian }}-oauth
+
+php_fpm_pool_user: nginx
+php_fpm_pool_group: nginx
+php_webserver_daemon: "nginx"
+
+#adminer role settings
+adminer_install_dir: /var/www/rising/adminer
+
+#Xdebug role settings
+php_xdebug_version: 2.7.1
+php_xdebug_remote_enable: "true"
+
+#composer variables
+composer_global_packages:
+    - { name: phpunit/phpunit, release: "8.*" }
+    
+#drush variables
+drush_launcher_install: false
+drush_composer_global_install: true
+
+#security role
+security_sudoers_passwordless:
+      - vagrant

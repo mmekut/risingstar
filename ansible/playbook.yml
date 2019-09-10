@@ -1,0 +1,23 @@
+---
+- hosts: all
+  become: yes
+  vars_files:
+    - vars/all.yml
+  roles:
+    - risingstar.config
+    - geerlingguy.pip
+    - geerlingguy.git
+    - geerlingguy.nodejs
+    - geerlingguy.mysql
+    - geerlingguy.postgresql
+    - geerlingguy.memcached
+    - geerlingguy.redis
+    - risingstar.openssl
+    - nginxinc.nginx
+    - geerlingguy.php
+    - geerlingguy.php-xdebug
+    - geerlingguy.composer
+    - geerlingguy.drush
+    - geerlingguy.adminer
+    - geerlingguy.security
+    - geerlingguy.firewall
