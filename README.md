@@ -1,5 +1,5 @@
 # risingstar
-Vagrant-Powered LEMP Server
+LEMP Server VM
 
 A Virtual Machine with LEMP/LEMU Server for development and testing built using Hashicorp Vagrant, Oracle Virtualbox (VM tool) and fully provisioned with Ansible orchestration software from RedHat.
 
@@ -22,6 +22,7 @@ The VM builds with bento/ubuntu-18.10 box (ubuntu-cosmic) from vagrant cloud and
 The VM is designed primarily for PHP 7 development but installs latest perl, nodejs, ruby and python interpreters as well as gcc/make tools for development in other languages.
 
 
+
 BASIC REQUIREMENTS
 
 To run this VM, your pc must be on Windows 7 SP1 (64-bit --- though i run mine on 32-bit but it is not advisable) with powershell 3.0 and above, Windows 8.1 and Windows 10.
@@ -29,6 +30,8 @@ To run this VM, your pc must be on Windows 7 SP1 (64-bit --- though i run mine o
 Your pc must be connected to a power supply and broadband internet before firing up the machine.
 
 It is highly recommended to peruse the vagrant doc at vagrantup.com/docs if you are new to vagrant and virtualization.
+
+
 
 SET-UP
 
@@ -42,6 +45,8 @@ SET-UP
 - To access the HTTP server from a browser using a name (e.g sweetgeez.local), You will need to edit your host file at windows/system32/drivers/etc/hosts with notepad running as an administrator. Then map your preferred hostname to the IP found in the vagrantfile ELSE you will be accessing the server using the IP in the vagrantfile. NOTE: Vagrant can do this automatically with the hostname plugin but I prefer doing things manually to understand the process better.
 
 
+
+
 CONFIGURATION
 
 To customize the VM configuration, open the vagrantfile and modify its content before running vagrant up command.
@@ -49,6 +54,8 @@ To customize the VM configuration, open the vagrantfile and modify its content b
 Ansible roles variables are found in ansible/var/all.yml. If you want to install/configure any services not included with this package, kindly look for ansible roles that performs such function on Ansible Galaxy and edit requirements.yml and playbook.yml found in ansible folder. Don't change anything you don't understand. Visit ansible docs when in doubt.
 
 Always use the relevant docs before starting this VM OR you can use the issue queue to ask questions for clarification.
+
+
 
 
 USAGE
