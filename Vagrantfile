@@ -41,7 +41,9 @@ Vagrant.configure("2") do |config|
             ansible.galaxy_command = 'sudo ansible-galaxy install --role-file=%{role_file} --roles-path=%{roles_path}'
         end
         
-        #syncronized folders in host and guest
-        u.vm.synced_folder "projects", "/var/www/rising"
+        # Syncronized folders in host and guest
+        # Permission issues dealt with me --- 4 4-months
+        u.vm.synced_folder "projects", "/var/www/rising",
+        owner: "nginx", group: "nginx", mount_options: ["dmode=775", "fmode=664"]
     end
 end
